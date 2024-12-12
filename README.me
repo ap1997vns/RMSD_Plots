@@ -1,0 +1,90 @@
+# RMSD Analysis Pipeline
+
+This repository contains an R script for processing and visualizing RMSD data of various protein mutants. The script loads, filters, and transforms the data, then generates and saves combined RMSD plots for selected protein groups.
+
+## Prerequisites
+
+### Required Libraries
+Ensure the following R libraries are installed:
+
+- `ggplot2`
+- `gridExtra`
+- `plyr`
+- `grid`
+
+Install them using:
+
+```R
+install.packages(c("ggplot2", "gridExtra", "plyr", "grid"))
+```
+
+### Data Files
+This script assumes you have the following input data files:
+
+- `newT180I.txt`
+- `newS171L1.txt`
+- `newA97V.txt`
+- `newM188I.txt`
+- `newWT.txt`
+- `finalR102Q.txt`
+- `newR71C.txt`
+- `newE152A.txt`
+
+These files should be formatted as CSV files (comma-separated values) without headers. Ensure that the columns are structured as:
+
+1. Protein Name
+2. Domain
+3. Time (in nanoseconds)
+4. RMSD Value
+
+## Usage
+
+### 1. Clone the Repository
+Clone this repository to your local machine:
+
+cd rmsd-analysis   (change directory wherever you have placed you files)
+```
+
+### 2. Run the Script
+Run the R script using your preferred R environment:
+
+```R
+source("rmsd_analysis_script.R")
+```
+
+### 3. Output
+The script generates a combined plot image (`Combined_Plots.png`) in the working directory. The plot includes:
+
+- Individual plots for each protein group (e.g., WT, mutants).
+- Title and labeled axes.
+
+### 4. Customization
+You can customize the following:
+
+- **Input Files:** Modify the `data_files` list in the script to match your input files and corresponding protein labels.
+- **Colors and Line Types:** Adjust `color_values` and `scale_linetype_manual` in the `create_plot` function to change the appearance.
+- **Output Dimensions:** Update the `save_combined_plot` function to change the output image dimensions or format.
+
+## File Structure
+
+```plaintext
+rmsd-analysis/
+├── newT180I.txt
+├── newS171L1.txt
+├── newA97V.txt
+├── newM188I.txt
+├── newWT.txt
+├── finalR102Q.txt
+├── newR71C.txt
+├── newE152A.txt
+├── rmsd_analysis_script.R
+└── Combined_Plots.png
+```
+
+## Notes
+
+- Ensure your input data meets the required format.
+- For large datasets, consider optimizing the script's filtering and transformation steps.
+- The `y_limits` are dynamically computed based on the range of RMSD values.
+
+
